@@ -1,14 +1,13 @@
 const express = require('express');
 const app = express();
 const PORT = 3001;
+app.use(express.json());
 
-app.set('view engine', 'ejs');
+const bodyParser=require('body-parser');
 
-app.get('/', (req, res) => {
-    res.render('index', { title: 'SSR with Node.js' });
+const path = require("path");
+app.use(bodyParser.urlencoded({extended:false}));
+
+app.listen(port , () => {
+    console.log('Now listening on port http://localhost:${port}');
 });
-
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
-
